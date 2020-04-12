@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
-
+import UsersServiceService from './users-service.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, ProfileComponent, ProfiledetailComponent],
-  imports: [FormsModule, BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [FormsModule, BrowserModule, HttpClientModule, AppRoutingModule],
+  providers: [UsersServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../User';
+import UsersServiceService from '../users-service.service';
 @Component({
   selector: 'app-profiledetail',
   templateUrl: './profiledetail.component.html',
@@ -10,12 +11,20 @@ export class ProfiledetailComponent implements OnInit {
   //   Fname: '',
   //   Lname: '',
   // };
+  Users = [];
 
   // @Input() user: User;
 
-  constructor() {}
+  constructor(private usersServiceService: UsersServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    console.log(this.usersServiceService.getUsers());
+
+    this.usersServiceService.getUsers().subscribe((data) => {
+      this.Users = data;
+    });
+    console.log(this.Users);
+  }
   Fname = '';
   Lname = '';
 }

@@ -1,3 +1,13 @@
+<h2>Users Details</h2>
+<div *ngFor="let user of Users">
+  <h3>User {{ user.id }}</h3>
+  <p for="{{ user.id }}">
+    User name: {{ user.name }}<br />
+    Email: {{ user.email }}<br />
+    Company name: {{ user.company.name }}
+  </p>
+</div>
+<p>_______________________________________________________________________</p>
 <div>
   <label> First Name: </label>
   <input type="text" [(ngModel)]="Fname" />
