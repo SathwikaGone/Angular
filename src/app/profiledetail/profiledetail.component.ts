@@ -7,24 +7,24 @@ import UsersServiceService from '../users-service.service';
   styleUrls: ['./profiledetail.component.css'],
 })
 export class ProfiledetailComponent implements OnInit {
-  // User = {
-  //   Fname: '',
-  //   Lname: '',
-  // };
   Users = [];
-
-  // @Input() user: User;
+  FilteredEmp;
+  SearchEmp;
+  Fname = '';
+  Lname = '';
 
   constructor(private usersServiceService: UsersServiceService) {}
 
   ngOnInit() {
-    console.log(this.usersServiceService.getUsers());
-
     this.usersServiceService.getUsers().subscribe((data) => {
       this.Users = data;
+      this.FilteredEmp = data;
     });
-    console.log(this.Users);
   }
-  Fname = '';
-  Lname = '';
+
+  filterEmployees() {
+    this.FilteredEmp = this.Users.filter(
+      (user) => user.name.toLowerCase().includes(this.SearchEmp) === true
+    );
+  }
 }
