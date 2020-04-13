@@ -1,7 +1,14 @@
 Search user :
 <input type="text" [(ngModel)]="SearchEmp" (input)="filterEmployees()" />
 <h2>Users Details</h2>
-<app-profileitem [Users]="FilteredEmp"></app-profileitem>
+<div *ngFor="let user of FilteredEmp">
+  <app-profileitem
+    [name]="user.name"
+    [email]="user.email"
+    [companyname]="user.company.name"
+    [id]="user.id"
+  ></app-profileitem>
+</div>
 <!-- <div *ngFor="let user of FilteredEmp">
   <h3>User {{ user.id }}</h3>
   <p>

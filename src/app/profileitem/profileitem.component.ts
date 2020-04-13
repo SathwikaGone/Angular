@@ -10,5 +10,8 @@ export class ProfileitemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input() Users;
+  @Input() id;
+  @Input() name: string;
+  @Input() email: string;
+  @Input() companyname: number;
 }
