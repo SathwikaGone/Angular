@@ -9,4 +9,15 @@ export class ProfileComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  outputval = {
+    Fname: '',
+    Lname: '',
+  };
+
+  getOutputVal(value) {
+    if (value) {
+      this.outputval.Fname = value.Fname;
+      this.outputval.Lname = value.Lname;
+    }
+  }
 }

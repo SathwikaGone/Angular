@@ -1,1 +1,3 @@
-<app-profiledetail></app-profiledetail>
+<app-profiledetail (dataToP)="getOutputVal($event)"></app-profiledetail>
+<p>First name: {{ outputval.Fname }}</p>
+<p>Last Name: {{ outputval.Lname }}</p>
