@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { User } from '../User';
+import UsersServiceService from '../users-service.service';
 @Component({
   selector: 'app-profiledetail',
   templateUrl: './profiledetail.component.html',
-  styleUrls: ['./profiledetail.component.css']
+  styleUrls: ['./profiledetail.component.css'],
 })
 export class ProfiledetailComponent implements OnInit {
+  Users = [];
+  FilteredEmp;
+  SearchEmp;
+  Fname = '';
+  Lname = '';
 
-  constructor() { }
+  @Output() dataToP = new EventEmitter<object>();
 
-  ngOnInit(): void {
+  constructor(private usersServiceService: UsersServiceService) {}
+
+  ngOnInit() {
+    this.usersServiceService.getUsers().subscribe((data) => {
+      this.Users = data;
+      this.FilteredEmp = data;
+    });
   }
 
+  filterEmployees() {
+    this.FilteredEmp = this.Users.filter(
+      (user) => user.name.toLowerCase().includes(this.SearchEmp) === true
+    );
+  }
+
+  sendDataToP(Fname, Lname) {
+    let obj = { Fname: Fname, Lname: Lname };
+    this.dataToP.emit(obj);
+  }
 }

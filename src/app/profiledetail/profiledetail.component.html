@@ -1,13 +1,31 @@
-<div>
-  <h3>Address</h3>
-
-  <label>
-    Name:
-    <input type="text" />
-  </label>
-
-  <label>
-    Country:
-    <input type="text" />
-  </label>
+Search user :
+<input type="text" [(ngModel)]="SearchEmp" (input)="filterEmployees()" />
+<h2>Users Details</h2>
+<div *ngFor="let user of FilteredEmp">
+  <app-profileitem
+    [name]="user.name"
+    [email]="user.email"
+    [companyname]="user.company.name"
+    [id]="user.id"
+  ></app-profileitem>
 </div>
+<!-- <div *ngFor="let user of FilteredEmp">
+  <h3>User {{ user.id }}</h3>
+  <p>
+    User name: {{ user.name }}<br />
+    Email: {{ user.email }}<br />
+    Company name: {{ user.company.name }}
+  </p>
+</div> -->
+<p>_______________________________________________________________________</p>
+<div>
+  <label> First Name: </label>
+  <input type="text" [(ngModel)]="Fname" />
+
+  <label> Last Name: </label>
+  <input type="text" [(ngModel)]="Lname" />
+
+  <button (click)="sendDataToP(Fname, Lname)">Submit</button>
+</div>
+
+<!-- (keyup)="onKey($event)"  -->
